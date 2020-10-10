@@ -1,0 +1,104 @@
+﻿@page
+@model SAG2.Pages.Swords.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Sword</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.Mass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.Mass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.GripReference)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.GripReference)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.CenterOfMass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.CenterOfMass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.LeverReference)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.LeverReference)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.HiltNode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.HiltNode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.BladeNode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.BladeNode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.ActionPoint1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.ActionPoint1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.PivotPoint1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.PivotPoint1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.ActionPoint2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.ActionPoint2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.PivotPoint2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.PivotPoint2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.OverallLength)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.OverallLength)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.Style)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.Style)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sword.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sword.User.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Sword.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

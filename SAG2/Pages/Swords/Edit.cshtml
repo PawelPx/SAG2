@@ -1,0 +1,181 @@
+﻿@page
+@model SAG2.Pages.Swords.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<body>
+
+    <img id="sword1Pommel" src="~/img/sword1-pommel.png" hidden>
+    <img id="sword1Handle" src="~/img/sword1-handle.png" hidden>
+    <img id="sword1Blade" src="~/img/sword1-blade.png" hidden>
+    <img id="sword2Pommel" src="~/img/sword2-pommel.png" hidden>
+    <img id="sword2Handle" src="~/img/sword2-handle.png" hidden>
+    <img id="sword2Blade" src="~/img/sword2-blade.png" hidden>
+    <img id="longsword1Pommel" src="~/img/longsword1-pommel.png" hidden>
+    <img id="longsword1Handle" src="~/img/longsword1-handle.png" hidden>
+    <img id="longsword1Blade" src="~/img/longsword1-blade.png" hidden>
+    <img id="longsword2Pommel" src="~/img/longsword2-pommel.png" hidden>
+    <img id="longsword2Handle" src="~/img/longsword2-handle.png" hidden>
+    <img id="longsword2Blade" src="~/img/longsword2-blade.png" hidden>
+    <img id="falchionPommel" src="~/img/falchion-pommel.png" hidden>
+    <img id="falchionHandle" src="~/img/falchion-handle.png" hidden>
+    <img id="falchionBlade" src="~/img/falchion-blade.png" hidden>
+    <img id="rapierPommel" src="~/img/rapier-pommel.png" hidden>
+    <img id="rapierHandle" src="~/img/rapier-handle.png" hidden>
+    <img id="rapierBlade" src="~/img/rapier-blade.png" hidden>
+
+    <div class="left-part">
+        <h1>Edit</h1>
+        <hr />
+
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Sword.ID" />
+
+            <label asp-for="Sword.Name" class="control-label"></label>
+            <input style="margin-left:63px; width:351px" asp-for="Sword.Name" class="form-control" />
+            <span asp-validation-for="Sword.Name" class="text-danger"></span>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label asp-for="Sword.Mass" class="control-label">Mass</label></td>
+                        <td>
+                            <input asp-for="Sword.Mass" class="form-control" placeholder="g" />
+                            <span asp-validation-for="Sword.Mass" class="text-danger"></span>
+                        </td>
+                        <td><label asp-for="Sword.GripReference" class="control-label">Grip Reference</label></td>
+                        <td>
+                            <input asp-for="Sword.GripReference" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.GripReference" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Sword.CenterOfMass" class="control-label">Center Of Mass</label></td>
+                        <td>
+                            <input asp-for="Sword.CenterOfMass" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.CenterOfMass" class="text-danger"></span>
+                        </td>
+                        <td><label asp-for="Sword.LeverReference" class="control-label">Lever Reference</label></td>
+                        <td>
+                            <input asp-for="Sword.LeverReference" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.LeverReference" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Sword.HiltNode" class="control-label">Hilt Node</label></td>
+                        <td>
+                            <input asp-for="Sword.HiltNode" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.HiltNode" class="text-danger"></span>
+                        </td>
+                        <td><label asp-for="Sword.BladeNode" class="control-label">Blade Node</label></td>
+                        <td>
+                            <input asp-for="Sword.BladeNode" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.BladeNode" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Sword.ActionPoint1" class="control-label">Action Point 1</label></td>
+                        <td>
+                            <input asp-for="Sword.ActionPoint1" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.ActionPoint1" class="text-danger"></span>
+                        </td>
+                        <td><label asp-for="Sword.PivotPoint1" class="control-label">Pivot Point 1</label></td>
+                        <td>
+                            <input asp-for="Sword.PivotPoint1" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.PivotPoint1" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Sword.ActionPoint2" class="control-label">Action Point 2</label></td>
+                        <td>
+                            <input asp-for="Sword.ActionPoint2" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.ActionPoint2" class="text-danger"></span>
+                        </td>
+                        <td><label asp-for="Sword.PivotPoint2" class="control-label">Pivot Point 2</label></td>
+                        <td>
+                            <input asp-for="Sword.PivotPoint2" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.PivotPoint2" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Sword.OverallLength" class="control-label">Overall Length</label></td>
+                        <td>
+                            <input asp-for="Sword.OverallLength" class="form-control" placeholder="cm" />
+                            <span asp-validation-for="Sword.OverallLength" class="text-danger"></span>
+                        </td>
+                        <td><label asp-for="Sword.Style" class="control-label">Style</label></td>
+                        <td>
+                            <select asp-for="Sword.Style" class="form-control">
+                                <option value="(none)">(none)</option>
+                                <option value="sword1">sword 1</option>
+                                <option value="sword2">sword 2</option>
+                                <option value="longsword1">longsword 1</option>
+                                <option value="longsword2">longsword 2</option>
+                                <option value="falchion">falchion</option>
+                                <option value="rapier">rapier</option>
+                            </select>
+                            <span asp-validation-for="Sword.Style" class="text-danger"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <select asp-for="Sword.UserId" class="form-control" asp-items="ViewBag.UserId" hidden></select>
+            <input type="submit" value="Save" class="btn btn-primary" style="width:100px" />
+            <input type="button" class="btn" value="Download" onclick="download()" style="width:100px; margin-left:10px; background-color:lightgray" />
+        </form>
+
+        <br>
+        <div>
+            <a id="back" asp-page="Index">Back to List</a>
+        </div>
+
+        <br><br><br><br>
+
+        <h4>Attributes</h4>
+        <div class="myBorder">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label>Cutting Potential:</label></td>
+                        <td><label id="cuttingPotential" class="values"></label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Inertia X:</label></td>
+                        <td> <label id="inertiaX" class="values"></label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Inertia Y:</label></td>
+                        <td><label id="inertiaY" class="values"></label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Maneuverability:</label></td>
+                        <td><label id="maneuverability" class="values"></label></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="right-part">
+        <canvas id="graph"></canvas>
+    </div>
+
+
+    <script src="~/js/graphGenerator.js"></script>
+
+</body>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
