@@ -22,6 +22,7 @@ var comToHandlePivot1, comToHandlePivot2, comToBladePivot1, comToBladePivot2, co
 var cuttingPotential;
 var scaledGripReference, scaledLeverReference, scaledCenterOfMass, scaledOverallLength, scaledWidthOfOval, scaledHeightOfOval, scaledBladeNode, scaledHiltNode,
     scaledActionPoint1, scaledPivotPoint1, scaledActionPoint2, scaledPivotPoint2;
+var heightOfDrawing = 120;
 
 c = 0.2;
 var scale = 500;
@@ -338,6 +339,7 @@ function scaleAll() {
 }
 function scaleGripReference() {
     scaledGripReference = gripReference * scale;
+    //heightOfDrawing = scaledGripReference;
 }
 function scaleLeverReference() {
     scaledLeverReference = leverReference * scale;
@@ -391,9 +393,9 @@ function redraw() {
             swordHandle = document.getElementById(style + "Handle");
             swordBlade = document.getElementById(style + "Blade");
 
-            ctx.drawImage(swordPommel, 0, (canvas.height - scaledGripReference) / 2, scaledLeverReference, scaledGripReference);
-            ctx.drawImage(swordHandle, scaledLeverReference, (canvas.height - scaledGripReference) / 2, scaledGripReference - scaledLeverReference, scaledGripReference);
-            ctx.drawImage(swordBlade, scaledGripReference, (canvas.height - scaledGripReference) / 2, scaledOverallLength - scaledGripReference, scaledGripReference);
+            ctx.drawImage(swordPommel, 0, (canvas.height - heightOfDrawing) / 2, scaledLeverReference, heightOfDrawing);
+            ctx.drawImage(swordHandle, scaledLeverReference, (canvas.height - heightOfDrawing) / 2, scaledGripReference - scaledLeverReference, heightOfDrawing);
+            ctx.drawImage(swordBlade, scaledGripReference, (canvas.height - heightOfDrawing) / 2, scaledOverallLength - scaledGripReference, heightOfDrawing);
         }
         drawPoints();
     }, 1);

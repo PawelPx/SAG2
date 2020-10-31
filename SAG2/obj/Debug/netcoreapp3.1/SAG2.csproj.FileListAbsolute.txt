@@ -166,3 +166,8 @@ C:\Users\Pawel\source\repos\SAG2\SAG2\obj\Debug\netcoreapp3.1\Razor\Pages\Swords
 C:\Users\Pawel\source\repos\SAG2\SAG2\obj\Debug\netcoreapp3.1\Razor\Pages\Swords\Edit.cshtml.g.cs
 C:\Users\Pawel\source\repos\SAG2\SAG2\obj\Debug\netcoreapp3.1\Razor\Pages\Swords\Index.cshtml.g.cs
 C:\Users\Pawel\source\repos\SAG2\SAG2\obj\Debug\netcoreapp3.1\Razor\Pages\Info.cshtml.g.cs
+C:\Users\Pawel\source\repos\SAG2\SAG2\obj\Debug\netcoreapp3.1\SAG2.csproj.CoreCompileInputs.cache
+C:\Users\Pawel\source\repos\SAG2\SAG2\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\Pawel\source\repos\SAG2\SAG2\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.sag - Web Deploy.json
+C:\Users\Pawel\source\repos\SAG2\SAG2\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\sag - Web Deploy\mssql1.arm.json
+C:\Users\Pawel\source\repos\SAG2\SAG2\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\sag - Web Deploy\profile.arm.json

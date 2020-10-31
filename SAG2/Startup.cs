@@ -27,10 +27,12 @@ namespace SAG2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(@"Server=DESKTOP-DVTFMOJ;Database=SAG2Db;Trusted_Connection=True;"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(@"Server=DESKTOP-DVTFMOJ;Database=SAG2Db;Trusted_Connection=True;"));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(@"Data Source=tcp:sag2dbserver.database.windows.net,1433;Initial Catalog=SAG2_db;User Id=@sag2dbserver;Password="));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();

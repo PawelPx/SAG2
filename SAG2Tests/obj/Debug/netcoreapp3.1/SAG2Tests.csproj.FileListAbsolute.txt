@@ -100,3 +100,4 @@ C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Debug\netcoreapp3.1\WebDriver.dll
 C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Debug\netcoreapp3.1\SAG2Tests.pdb
 C:\Users\Pawel\source\repos\SAG2\SAG2Tests\obj\Debug\netcoreapp3.1\SAG2Tests.dll
 C:\Users\Pawel\source\repos\SAG2\SAG2Tests\obj\Debug\netcoreapp3.1\SAG2Tests.pdb
+C:\Users\Pawel\source\repos\SAG2\SAG2Tests\obj\Debug\netcoreapp3.1\SAG2Tests.csproj.CoreCompileInputs.cache

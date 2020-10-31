@@ -11,5 +11,13 @@
     <WebStackScaffolding_DbContextTypeFullName>SAG2.Data.ApplicationDbContext</WebStackScaffolding_DbContextTypeFullName>
     <RazorPage_SelectedScaffolderID>Microsoft.WebTools.Scaffolding.Core.RazorPageScaffolder</RazorPage_SelectedScaffolderID>
     <RazorPage_SelectedScaffolderCategoryPath>root/RazorPage</RazorPage_SelectedScaffolderCategoryPath>
+    <NameOfLastUsedPublishProfile>sag - Web Deploy</NameOfLastUsedPublishProfile>
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

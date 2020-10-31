@@ -130,6 +130,12 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+<style>
+    label {
+        width: 110px;
+    }
+</style>
+
 <h1>Create</h1>
 
 <h4>Sword</h4>
@@ -139,23 +145,27 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Sword.Name" class="control-label"></label>
-                <input style="margin-left:55px; width:208px" asp-for="Sword.Name" class="form-control" />
-                <span asp-validation-for="Sword.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <table>
                     <tbody>
                         <tr>
                             <td>
-                                <label asp-for="Sword.Mass" class="control-label"></label>
+                                <label asp-for="Sword.Name" class="control-label"></label>
+                            </td>
+                            <td>
+                                <input asp-for="Sword.Name" class="form-control" />
+                                <span asp-validation-for="Sword.Name" class="text-danger"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="Sword.Mass" class="control-label">Mass</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.Mass" class="form-control" placeholder="g" />
                                 <span asp-validation-for="Sword.Mass" class="text-danger"></span>
                             </td>
                             <td>
-                                <label asp-for="Sword.GripReference" class="control-label"></label>
+                                <label asp-for="Sword.GripReference" class="control-label">Grip Reference</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.GripReference" class="form-control" placeholder="cm" />
@@ -164,14 +174,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <label asp-for="Sword.CenterOfMass" class="control-label"></label>
+                                <label asp-for="Sword.CenterOfMass" class="control-label">Center Of Mass</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.CenterOfMass" class="form-control" placeholder="cm" />
                                 <span asp-validation-for="Sword.CenterOfMass" class="text-danger"></span>
                             </td>
                             <td>
-                                <label asp-for="Sword.LeverReference" class="control-label"></label>
+                                <label asp-for="Sword.LeverReference" class="control-label">Lever Reference</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.LeverReference" class="form-control" placeholder="cm" />
@@ -180,14 +190,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <label asp-for="Sword.HiltNode" class="control-label"></label>
+                                <label asp-for="Sword.HiltNode" class="control-label">Hilt Node</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.HiltNode" class="form-control" placeholder="cm" />
                                 <span asp-validation-for="Sword.HiltNode" class="text-danger"></span>
                             </td>
                             <td>
-                                <label asp-for="Sword.BladeNode" class="control-label"></label>
+                                <label asp-for="Sword.BladeNode" class="control-label">Blade Node</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.BladeNode" class="form-control" placeholder="cm" />
@@ -196,14 +206,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <label asp-for="Sword.ActionPoint1" class="control-label"></label>
+                                <label asp-for="Sword.ActionPoint1" class="control-label">Action Point 1</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.ActionPoint1" class="form-control" placeholder="cm" />
                                 <span asp-validation-for="Sword.ActionPoint1" class="text-danger"></span>
                             </td>
                             <td>
-                                <label asp-for="Sword.PivotPoint1" class="control-label"></label>
+                                <label asp-for="Sword.PivotPoint1" class="control-label">Pivot Point 1</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.PivotPoint1" class="form-control" placeholder="cm" />
@@ -212,14 +222,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <label asp-for="Sword.ActionPoint2" class="control-label"></label>
+                                <label asp-for="Sword.ActionPoint2" class="control-label">Action Point 2</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.ActionPoint2" class="form-control" placeholder="cm" />
                                 <span asp-validation-for="Sword.ActionPoint2" class="text-danger"></span>
                             </td>
                             <td>
-                                <label asp-for="Sword.PivotPoint2" class="control-label"></label>
+                                <label asp-for="Sword.PivotPoint2" class="control-label">Pivot Point 2</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.PivotPoint2" class="form-control" placeholder="cm" />
@@ -228,14 +238,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <label asp-for="Sword.OverallLength" class="control-label"></label>
+                                <label asp-for="Sword.OverallLength" class="control-label">Overall Length</label>
                             </td>
                             <td>
                                 <input asp-for="Sword.OverallLength" class="form-control" placeholder="cm" />
                                 <span asp-validation-for="Sword.OverallLength" class="text-danger"></span>
                             </td>
                             <td>
-                                <label asp-for="Sword.Style" class="control-label"></label>
+                                <label asp-for="Sword.Style" class="control-label">Style</label>
                             </td>
                             <td>
                                 <select asp-for="Sword.Style" class="form-control">
