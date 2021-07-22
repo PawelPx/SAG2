@@ -13,16 +13,17 @@ class Point {
 
 var ctx = canvas.getContext("2d");
 
-var swordPommel;
-var swordHandle;
-var swordBlade;
+var imageOfPommel;
+var imageOfHandle;
+var imageOfBlade;
 
 var mass, gripReference, centerOfMass, leverReference, hiltNode, bladeNode, actionPoint1, pivotPoint1, actionPoint2, pivotPoint2, overallLength, style;
-var comToHandlePivot1, comToHandlePivot2, comToBladePivot1, comToBladePivot2, comToCross, handleLength, j1, j2, c, widthOfOval, heightOfOval, angleOfCone, degrees;
+var comToActionPoint1, comToActionPoint2, comToPivotPoint1, comToPivotPoint2, comToCross, comToHandle, j1, j2, c, widthOfOval, heightOfOval, angleOfCone, degrees;
 var cuttingPotential;
 var scaledGripReference, scaledLeverReference, scaledCenterOfMass, scaledOverallLength, scaledWidthOfOval, scaledHeightOfOval, scaledBladeNode, scaledHiltNode,
     scaledActionPoint1, scaledPivotPoint1, scaledActionPoint2, scaledPivotPoint2;
-var heightOfDrawing = 120;
+var heightOfSword = 120;
+var lengthOfLine = 20;
 
 c = 0.2;
 var scale = 500;
@@ -48,27 +49,27 @@ var labelInertiaX = document.getElementById("inertiaX");
 var labelInertiaY = document.getElementById("inertiaY");
 var labelManeuverability = document.getElementById("maneuverability");
 
-mass = parseFloat(inputMass.value) / 1000;
-gripReference = parseFloat(inputGripReference.value) / 100;
-centerOfMass = parseFloat(inputCenterOfMass.value) / 100;
-leverReference = parseFloat(inputLeverReference.value) / 100;
-hiltNode = parseFloat(inputHiltNode.value) / 100;
-bladeNode = parseFloat(inputBladeNode.value) / 100;
-actionPoint1 = parseFloat(inputActionPoint1.value) / 100;
-pivotPoint1 = parseFloat(inputPivotPoint1.value) / 100;
-actionPoint2 = parseFloat(inputActionPoint2.value) / 100;
-pivotPoint2 = parseFloat(inputPivotPoint2.value) / 100;
-overallLength = parseFloat(inputOverallLength.value) / 100;
+mass = scaleInput(inputMass, 1000);
+gripReference = scaleInput(inputGripReference);
+centerOfMass = scaleInput(inputCenterOfMass);
+leverReference = scaleInput(inputLeverReference);
+hiltNode = scaleInput(inputHiltNode);
+bladeNode = scaleInput(inputBladeNode);
+actionPoint1 = scaleInput(inputActionPoint1);
+pivotPoint1 = scaleInput(inputPivotPoint1);
+actionPoint2 = scaleInput(inputActionPoint2);
+pivotPoint2 = scaleInput(inputPivotPoint2);
+overallLength = scaleInput(inputOverallLength);
 style = inputStyle.value;
 
-comToHandlePivot1 = countComToHandlePivot(actionPoint1);
-comToBladePivot1 = countComToBladePivot(pivotPoint1);
-comToHandlePivot2 = countComToHandlePivot(actionPoint2);
-comToBladePivot2 = countComToBladePivot(pivotPoint2);
+comToActionPoint1 = countComToActionPoint(actionPoint1);
+comToPivotPoint1 = countComToPivotPoint(pivotPoint1);
+comToActionPoint2 = countComToActionPoint(actionPoint2);
+comToPivotPoint2 = countComToPivotPoint(pivotPoint2);
 countComToCross();
-countHandleLength();
-j1 = countJ(comToHandlePivot1, comToBladePivot1);
-j2 = countJ(comToHandlePivot2, comToBladePivot2);
+countComToHandle();
+j1 = countJ(comToActionPoint1, comToPivotPoint1);
+j2 = countJ(comToActionPoint2, comToPivotPoint2);
 countWidthOfOval();
 countHeightOfOval();
 countAngleOfCone();
@@ -80,10 +81,12 @@ countCuttingPotential();
 scaleAll();
 
 redraw();
+resetAttributes();
 
 
 inputMass.onchange = function () {
-    mass = parseFloat(inputMass.value) / 1000;
+    mass = scaleInput(inputMass, 1000);
+
     countWidthOfOval()
     countHeightOfOval();
     countAngleOfCone();
@@ -96,29 +99,35 @@ inputMass.onchange = function () {
     scaleHeightOfOval();
 
     redraw();
+    resetAttributes();
 }
 inputGripReference.onchange = function () {
-    gripReference = parseFloat(inputGripReference.value) / 100;
+    gripReference = scaleInput(inputGripReference);
+
     countComToCross();
-    countHandleLength();
-    j1 = countJ(comToHandlePivot1, comToBladePivot1);
-    j2 = countJ(comToHandlePivot2, comToBladePivot2);
+    j1 = countJ(comToActionPoint1, comToPivotPoint1);
+    j2 = countJ(comToActionPoint2, comToPivotPoint2);
     countHeightOfOval();
     countAngleOfCone();
     countDegrees();
 
     scaleGripReference();
+    scaleHeightOfOval();
 
     redraw();
+    resetAttributes();
 }
 inputCenterOfMass.onchange = function () {
-    centerOfMass = parseFloat(inputCenterOfMass.value) / 100;
-    comToHandlePivot1 = countComToHandlePivot(actionPoint1);
-    comToHandlePivot2 = countComToHandlePivot(actionPoint2);
-    comToBladePivot1 = countComToBladePivot(pivotPoint1);
-    comToBladePivot2 = countComToBladePivot(pivotPoint2);
-    j1 = countJ(comToHandlePivot1, comToBladePivot1);
-    j2 = countJ(comToHandlePivot2, comToBladePivot2);
+    centerOfMass = scaleInput(inputCenterOfMass);
+
+    comToActionPoint1 = countComToActionPoint(actionPoint1);
+    comToActionPoint2 = countComToActionPoint(actionPoint2);
+    comToPivotPoint1 = countComToPivotPoint(pivotPoint1);
+    comToPivotPoint2 = countComToPivotPoint(pivotPoint2);
+    countComToCross();
+    countComToHandle();
+    j1 = countJ(comToActionPoint1, comToPivotPoint1);
+    j2 = countJ(comToActionPoint2, comToPivotPoint2);
     countHeightOfOval();
     countAngleOfCone();
     countDegrees();
@@ -131,36 +140,42 @@ inputCenterOfMass.onchange = function () {
     scaleHeightOfOval();
 
     redraw();
+    resetAttributes();
 }
 inputLeverReference.onchange = function () {
-    leverReference = parseFloat(inputLeverReference.value) / 100;
-    countHandleLength();
+    leverReference = scaleInput(inputLeverReference);
+
+    countComToHandle();
     countAngleOfCone();
     countDegrees();
 
     scaleLeverReference();
 
     redraw();
+    resetAttributes();
 }
 inputHiltNode.onchange = function () {
-    hiltNode = parseFloat(inputHiltNode.value) / 100;
+    hiltNode = scaleInput(inputHiltNode);
 
     scaleHiltNode();
 
     redraw();
 }
 inputBladeNode.onchange = function () {
-    bladeNode = parseFloat(inputBladeNode.value) / 100;
+    bladeNode = scaleInput(inputBladeNode);
+
     countCuttingPotential();
 
     scaleBladeNode();
 
     redraw();
+    resetAttributes();
 }
 inputActionPoint1.onchange = function () {
-    actionPoint1 = parseFloat(inputActionPoint1.value) / 100;
-    comToHandlePivot1 = countComToHandlePivot(actionPoint1);
-    j1 = countJ(comToHandlePivot1, comToBladePivot1);
+    actionPoint1 = scaleInput(inputActionPoint1);
+
+    comToActionPoint1 = countComToActionPoint(actionPoint1);
+    j1 = countJ(comToActionPoint1, comToPivotPoint1);
     countHeightOfOval();
     countAngleOfCone();
     countDegrees();
@@ -172,11 +187,13 @@ inputActionPoint1.onchange = function () {
     scaleHeightOfOval();
 
     redraw();
+    resetAttributes();
 }
 inputPivotPoint1.onchange = function () {
-    pivotPoint1 = parseFloat(inputPivotPoint1.value) / 100;
-    comToBladePivot1 = countComToBladePivot(pivotPoint1);
-    j1 = countJ(comToHandlePivot1, comToBladePivot1);
+    pivotPoint1 = scaleInput(inputPivotPoint1);
+
+    comToPivotPoint1 = countComToPivotPoint(pivotPoint1);
+    j1 = countJ(comToActionPoint1, comToPivotPoint1);
     countHeightOfOval();
     countAngleOfCone();
     countDegrees();
@@ -188,11 +205,13 @@ inputPivotPoint1.onchange = function () {
     scaleHeightOfOval();
 
     redraw();
+    resetAttributes();
 }
 inputActionPoint2.onchange = function () {
-    actionPoint2 = parseFloat(inputActionPoint2.value) / 100;
-    comToHandlePivot2 = countComToHandlePivot(actionPoint2);
-    j2 = countJ(comToHandlePivot2, comToBladePivot2);
+    actionPoint2 = scaleInput(inputActionPoint2);
+
+    comToActionPoint2 = countComToActionPoint(actionPoint2);
+    j2 = countJ(comToActionPoint2, comToPivotPoint2);
     countHeightOfOval();
     countAngleOfCone();
     countDegrees();
@@ -204,11 +223,13 @@ inputActionPoint2.onchange = function () {
     scaleHeightOfOval();
 
     redraw();
+    resetAttributes();
 }
 inputPivotPoint2.onchange = function () {
-    pivotPoint2 = parseFloat(inputPivotPoint2.value) / 100;
-    comToBladePivot2 = countComToBladePivot(pivotPoint2);
-    j2 = countJ(comToHandlePivot2, comToBladePivot2);
+    pivotPoint2 = scaleInput(inputPivotPoint2);
+
+    comToPivotPoint2 = countComToPivotPoint(pivotPoint2);
+    j2 = countJ(comToActionPoint2, comToPivotPoint2);
     countHeightOfOval();
     countAngleOfCone();
     countDegrees();
@@ -220,9 +241,11 @@ inputPivotPoint2.onchange = function () {
     scaleHeightOfOval();
 
     redraw();
+    resetAttributes();
 }
 inputOverallLength.onchange = function () {
-    overallLength = parseFloat(inputOverallLength.value) / 100;
+    overallLength = scaleInput(inputOverallLength);
+
     countLengths();
     countMasses();
     countPoints();
@@ -237,11 +260,11 @@ inputStyle.onchange = function () {
 }
 
 
-function countComToHandlePivot(actionPoint) {
+function countComToActionPoint(actionPoint) {
     return centerOfMass - actionPoint;
 }
 
-function countComToBladePivot(pivotPoint) {
+function countComToPivotPoint(pivotPoint) {
     return pivotPoint - centerOfMass;
 }
 
@@ -249,12 +272,12 @@ function countComToCross() {
     comToCross = centerOfMass - gripReference;
 }
 
-function countHandleLength() {
-    handleLength = gripReference - leverReference;
+function countComToHandle() {
+    comToHandle = centerOfMass - leverReference;
 }
 
-function countJ(comToHandlePivot, comToBladePivot) {
-    return comToHandlePivot * comToBladePivot + Math.pow(comToCross, 2);
+function countJ(comToActionPoint, comToPivotPoint) {
+    return comToActionPoint * comToPivotPoint + Math.pow(comToCross, 2);
 }
 
 function countWidthOfOval() {
@@ -262,7 +285,7 @@ function countWidthOfOval() {
 }
 
 function countHeightOfOval() {
-    heightOfOval = (countOneHeightOfOval(j1, comToHandlePivot1, comToBladePivot1) + countOneHeightOfOval(j2, comToHandlePivot2, comToBladePivot2)) / 2;
+    heightOfOval = (countOneHeightOfOval(j1, comToActionPoint1, comToPivotPoint1) + countOneHeightOfOval(j2, comToActionPoint2, comToPivotPoint2)) / 2;
 }
 
 function countAngleOfCone() {
@@ -287,11 +310,15 @@ function countLengths() {
 function countMasses() {
     masses.splice(0, masses.length);
     for (i = 0; i < lengths.length; i++) {
-        var x = Math.pow(centerOfMass - lengths[i], 2);
-        var mass1 = countMass(x, comToHandlePivot1, comToBladePivot1);
-        var mass2 = countMass(x, comToHandlePivot2, comToBladePivot2);
-        masses.push((mass1 + mass2) / 2);                                           // mass - ...   moze byc blad
+        var distanceToCom = Math.pow(centerOfMass - lengths[i], 2);
+        var mass1 = countMass(distanceToCom, comToActionPoint1, comToPivotPoint1);
+        var mass2 = countMass(distanceToCom, comToActionPoint2, comToPivotPoint2);
+        masses.push((mass1 + mass2) / 2);
     }
+}
+function countMass(distanceToCom, comToActionPoint, comToPivotPoint) {
+    var y = mass - ((mass * distanceToCom) / (comToActionPoint * comToPivotPoint + distanceToCom));
+    return y;
 }
 
 function countPoints() {
@@ -301,84 +328,86 @@ function countPoints() {
     }
 }
 
-function countOneHeightOfOval(j, comToHandlePivot, comToBladePivot) {
-    var heightOfOval = ((widthOfOval * j) / (comToHandlePivot * comToBladePivot));
+function countOneHeightOfOval(j, comToActionPoint, comToPivotPoint) {
+    var heightOfOval = ((widthOfOval * j) / (comToActionPoint * comToPivotPoint));
     return heightOfOval;
 }
 
 function countOneAngleOfCone(j) {
-    var angleOfCone = widthOfOval * handleLength / j;
+    var angleOfCone = widthOfOval * comToHandle / j;
     return angleOfCone;
-}
-
-function countMass(x, comToHandlePivot, comToBladePivot) {
-    var y = mass - ((mass * x) / (comToHandlePivot * comToBladePivot + x));
-    return y;
 }
 
 function countCuttingPotential() {
     var x = Math.pow(centerOfMass - bladeNode, 2);
-    var mass1 = countMass(x, comToHandlePivot1, comToBladePivot1);
-    var mass2 = countMass(x, comToHandlePivot2, comToBladePivot2);
+    var mass1 = countMass(x, comToActionPoint1, comToPivotPoint1);
+    var mass2 = countMass(x, comToActionPoint2, comToPivotPoint2);
     cuttingPotential = ((mass1 + mass2) / 2) / mass * 100;
 }
 
+function scaleInput(input, scale = 100) {
+    return parseFloat(input.value) / scale;
+}
 function scaleAll() {
-    scaledGripReference = gripReference * scale;
-    scaledLeverReference = leverReference * scale;
-    scaledCenterOfMass = centerOfMass * scale;
-    scaledHiltNode = hiltNode * scale;
-    scaledBladeNode = bladeNode * scale;
-    scaledActionPoint1 = actionPoint1 * scale;
-    scaledPivotPoint1 = pivotPoint1 * scale;
-    scaledActionPoint2 = actionPoint2 * scale;
-    scaledPivotPoint2 = pivotPoint2 * scale;
-    scaledOverallLength = overallLength * scale;
-    scaledWidthOfOval = widthOfOval * scale;
-    scaledHeightOfOval = heightOfOval * scale;
+    scaleGripReference();
+    scaleLeverReference();
+    scaleCenterOfMass();
+    scaleHiltNode();
+    scaleBladeNode();
+    scaleActionPoint1();
+    scalePivotPoint1();
+    scaleActionPoint2();
+    scalePivotPoint2();
+    scaleOverallLength();
+    scaleWidthOfOval();
+    scaleHeightOfOval();
 }
 function scaleGripReference() {
-    scaledGripReference = gripReference * scale;
-    //heightOfDrawing = scaledGripReference;
+    scaledGripReference = scaleOutput(gripReference);
 }
 function scaleLeverReference() {
-    scaledLeverReference = leverReference * scale;
+    scaledLeverReference = scaleOutput(leverReference);
 }
 function scaleCenterOfMass() {
-    scaledCenterOfMass = centerOfMass * scale;
+    scaledCenterOfMass = scaleOutput(centerOfMass);
 }
 function scaleHiltNode() {
-    scaledHiltNode = hiltNode * scale;
+    scaledHiltNode = scaleOutput(hiltNode);
 }
 function scaleBladeNode() {
-    scaledBladeNode = bladeNode * scale;
+    scaledBladeNode = scaleOutput(bladeNode);
 }
 function scaleActionPoint1() {
-    scaledActionPoint1 = actionPoint1 * scale;
+    scaledActionPoint1 = scaleOutput(actionPoint1);
 }
 function scalePivotPoint1() {
-    scaledPivotPoint1 = pivotPoint1 * scale;
+    scaledPivotPoint1 = scaleOutput(pivotPoint1);
 }
 function scaleActionPoint2() {
-    scaledActionPoint2 = actionPoint2 * scale;
+    scaledActionPoint2 = scaleOutput(actionPoint2);
 }
 function scalePivotPoint2() {
-    scaledPivotPoint2 = pivotPoint2 * scale;
+    scaledPivotPoint2 = scaleOutput(pivotPoint2);
 }
 function scaleOverallLength() {
-    scaledOverallLength = overallLength * scale;
+    scaledOverallLength = scaleOutput(overallLength);
 }
 function scaleWidthOfOval() {
-    scaledWidthOfOval = widthOfOval * scale;
+    scaledWidthOfOval = scaleOutput(widthOfOval);
 }
 function scaleHeightOfOval() {
-    scaledHeightOfOval = heightOfOval * scale;
+    scaledHeightOfOval = scaleOutput(heightOfOval);
 }
-
+function scaleOutput(value) {
+    return value * scale;
+}
 
 
 function redraw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#eeeeff";
+    ctx.strokeStyle = "#0f75bc";
 
     drawOval();
     drawCones();
@@ -389,40 +418,51 @@ function redraw() {
             drawSword();
         }
         else {
-            swordPommel = document.getElementById(style + "Pommel");
-            swordHandle = document.getElementById(style + "Handle");
-            swordBlade = document.getElementById(style + "Blade");
+            imageOfPommel = document.getElementById(style + "Pommel");
+            imageOfHandle = document.getElementById(style + "Handle");
+            imageOfBlade = document.getElementById(style + "Blade");
 
-            ctx.drawImage(swordPommel, 0, (canvas.height - heightOfDrawing) / 2, scaledLeverReference, heightOfDrawing);
-            ctx.drawImage(swordHandle, scaledLeverReference, (canvas.height - heightOfDrawing) / 2, scaledGripReference - scaledLeverReference, heightOfDrawing);
-            ctx.drawImage(swordBlade, scaledGripReference, (canvas.height - heightOfDrawing) / 2, scaledOverallLength - scaledGripReference, heightOfDrawing);
+            drawSwordWithImages();
         }
         drawPoints();
     }, 1);
+}
 
+function resetAttributes() {
     labelCuttingPotential.innerHTML = cuttingPotential.toFixed(2);
-    var x = widthOfOval * 100;
-    labelInertiaX.innerHTML = x.toFixed(2);
-    x = heightOfOval * 100;
-    labelInertiaY.innerHTML = x.toFixed(2);
+    labelInertiaX.innerHTML = convertInertia(widthOfOval);
+    labelInertiaY.innerHTML = convertInertia(heightOfOval);
     labelManeuverability.innerHTML = degrees.toFixed(2);
+}
+function convertInertia(value) {
+    return (value * 100).toFixed(2);
 }
 
 function drawOval() {
-    ctx.fillStyle = "#eeeeff";
-    ctx.strokeStyle = "#0f75bc";
-
     ctx.beginPath();
-    ctx.ellipse(scaledGripReference, (canvas.height) / 2, scaledWidthOfOval / 2, scaledHeightOfOval / 2, 0, 0, 2 * Math.PI);
+    drawEllipse();
     ctx.fill();
 }
 
+function drawEllipse() {
+    ctx.ellipse(scaledGripReference, canvas.height / 2, scaledWidthOfOval / 2, scaledHeightOfOval / 2, 0, 0, 2 * Math.PI);
+}
+
 function drawCones() {
-    drawPieSlice(scaledGripReference, canvas.height / 2, scaledOverallLength - scaledGripReference, -angleOfCone, -angleOfCone + Math.PI / 90 * degrees);
-    drawPieSlice(scaledGripReference, canvas.height / 2, scaledGripReference, Math.PI - angleOfCone, Math.PI - angleOfCone + Math.PI / 90 * degrees);
+    drawCircleSlice(scaledGripReference, canvas.height / 2, scaledOverallLength - scaledGripReference, -angleOfCone, -angleOfCone + Math.PI / 90 * degrees);
+    drawCircleSlice(scaledGripReference, canvas.height / 2, scaledGripReference, Math.PI - angleOfCone, Math.PI - angleOfCone + Math.PI / 90 * degrees);
 
     ctx.beginPath();
-    ctx.ellipse(scaledGripReference, (canvas.height) / 2, scaledWidthOfOval / 2, scaledHeightOfOval / 2, 0, 0, 2 * Math.PI);
+    drawEllipse();
+    ctx.stroke();
+}
+
+function drawCircleSlice(centerX, centerY, radius, startAngle, endAngle) {
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+    ctx.closePath();
+    ctx.fill();
     ctx.stroke();
 }
 
@@ -456,6 +496,12 @@ function drawSword() {
     ctx.fillRect(scaledGripReference, canvas.height / 2 - 3, scaledOverallLength - scaledGripReference, 6);
 }
 
+function drawSwordWithImages() {
+    ctx.drawImage(imageOfPommel, 0, (canvas.height - heightOfSword) / 2, scaledLeverReference, heightOfSword);
+    ctx.drawImage(imageOfHandle, scaledLeverReference, (canvas.height - heightOfSword) / 2, scaledGripReference - scaledLeverReference, heightOfSword);
+    ctx.drawImage(imageOfBlade, scaledGripReference, (canvas.height - heightOfSword) / 2, scaledOverallLength - scaledGripReference, heightOfSword);
+}
+
 function drawPoints() {
     ctx.setLineDash([10, 10]);
     drawLine(scaledBladeNode, canvas.height / 2, scaledBladeNode, canvas.height);
@@ -463,15 +509,15 @@ function drawPoints() {
 
     ctx.setLineDash([]);
     ctx.strokeStyle = "#000000";
-    drawLine(scaledCenterOfMass, canvas.height / 2 - 20, scaledCenterOfMass, canvas.height);
+    drawLine(scaledCenterOfMass, canvas.height / 2 - lengthOfLine, scaledCenterOfMass, canvas.height);
 
     ctx.strokeStyle = "#00ff00";
-    drawLine(scaledActionPoint2, canvas.height / 2 - 20, scaledActionPoint2, canvas.height / 2 + 20);
-    drawLine(scaledPivotPoint2, canvas.height / 2 - 20, scaledPivotPoint2, canvas.height / 2 + 20);
+    drawLine(scaledActionPoint2, canvas.height / 2 - lengthOfLine, scaledActionPoint2, canvas.height / 2 + lengthOfLine);
+    drawLine(scaledPivotPoint2, canvas.height / 2 - lengthOfLine, scaledPivotPoint2, canvas.height / 2 + lengthOfLine);
 
     ctx.strokeStyle = "#ff0000";
-    drawLine(scaledActionPoint1, canvas.height / 2 - 20, scaledActionPoint1, canvas.height / 2 + 20);
-    drawLine(scaledPivotPoint1, canvas.height / 2 - 20, scaledPivotPoint1, canvas.height / 2 + 20);
+    drawLine(scaledActionPoint1, canvas.height / 2 - lengthOfLine, scaledActionPoint1, canvas.height / 2 + lengthOfLine);
+    drawLine(scaledPivotPoint1, canvas.height / 2 - lengthOfLine, scaledPivotPoint1, canvas.height / 2 + lengthOfLine);
 
     ctx.fillStyle = "#000000";
     ctx.font = "14px Arial";
@@ -483,16 +529,6 @@ function drawLine(startX, startY, endX, endY) {
     ctx.beginPath();
     ctx.moveTo(startX, startY);
     ctx.lineTo(endX, endY);
-    ctx.stroke();
-}
-
-function drawPieSlice(centerX, centerY, radius, startAngle, endAngle, color) {
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-    ctx.closePath();
-    ctx.fill();
     ctx.stroke();
 }
 

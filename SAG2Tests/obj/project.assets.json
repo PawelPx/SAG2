@@ -422,7 +422,7 @@
           "build/NUnit.props": {}
         }
       },
-      "NUnit3TestAdapter/3.15.1": {
+      "NUnit3TestAdapter/3.17.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.DotNet.InternalAbstractions": "1.0.0",
@@ -436,7 +436,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         },
         "build": {
-          "build/netcoreapp2.0/NUnit3TestAdapter.props": {}
+          "build/netcoreapp2.1/NUnit3TestAdapter.props": {}
         }
       },
       "runtime.native.System/4.3.0": {
@@ -499,7 +499,7 @@
           "lib/netstandard2.0/WebDriver.dll": {}
         }
       },
-      "Selenium.WebDriver.ChromeDriver/85.0.4183.8700": {
+      "Selenium.WebDriver.ChromeDriver/87.0.4280.2000": {
         "type": "package",
         "build": {
           "build/Selenium.WebDriver.ChromeDriver.targets": {}
@@ -1979,10 +1979,10 @@
         "nunit.nuspec"
       ]
     },
-    "NUnit3TestAdapter/3.15.1": {
-      "sha512": "gqy0llGjhJYq9ebFvtbmBcF/MY8z5kcTIxYs+eXwp2d4Ntha8pSPxUzryvBm7H46VbWI6FS5/XNbxwiQpe88vQ==",
+    "NUnit3TestAdapter/3.17.0": {
+      "sha512": "I9MNvK+GM2yXrHPitwZkAZKU9sYI2OO/8wKC+VuBD7V3z+ySQ1pSopX/urr0ooedI8/TIcajYPRO4vGRr7AM8A==",
       "type": "package",
-      "path": "nunit3testadapter/3.15.1",
+      "path": "nunit3testadapter/3.17.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1991,18 +1991,15 @@
         "build/net35/NUnit3.TestAdapter.pdb",
         "build/net35/NUnit3TestAdapter.props",
         "build/net35/nunit.engine.api.dll",
+        "build/net35/nunit.engine.core.dll",
         "build/net35/nunit.engine.dll",
-        "build/netcoreapp1.0/NUnit3.TestAdapter.dll",
-        "build/netcoreapp1.0/NUnit3.TestAdapter.pdb",
-        "build/netcoreapp1.0/NUnit3TestAdapter.props",
-        "build/netcoreapp1.0/nunit.engine.api.dll",
-        "build/netcoreapp1.0/nunit.engine.dll",
-        "build/netcoreapp2.0/NUnit3.TestAdapter.dll",
-        "build/netcoreapp2.0/NUnit3.TestAdapter.pdb",
-        "build/netcoreapp2.0/NUnit3TestAdapter.props",
-        "build/netcoreapp2.0/nunit.engine.api.dll",
-        "build/netcoreapp2.0/nunit.engine.dll",
-        "nunit3testadapter.3.15.1.nupkg.sha512",
+        "build/netcoreapp2.1/NUnit3.TestAdapter.dll",
+        "build/netcoreapp2.1/NUnit3.TestAdapter.pdb",
+        "build/netcoreapp2.1/NUnit3TestAdapter.props",
+        "build/netcoreapp2.1/nunit.engine.api.dll",
+        "build/netcoreapp2.1/nunit.engine.core.dll",
+        "build/netcoreapp2.1/nunit.engine.dll",
+        "nunit3testadapter.3.17.0.nupkg.sha512",
         "nunit3testadapter.nuspec"
       ]
     },
@@ -2102,10 +2099,10 @@
         "selenium.webdriver.nuspec"
       ]
     },
-    "Selenium.WebDriver.ChromeDriver/85.0.4183.8700": {
-      "sha512": "UaHj0RDkUoNtvYTVfZJk9Im/YpQX2nxugUZ5qWwx9phVu33tiecpBeTqQk4IPz8GQqUUjKdlT4QxKgu8VPafnA==",
+    "Selenium.WebDriver.ChromeDriver/87.0.4280.2000": {
+      "sha512": "jq1wC5pUz5Ov2CydyeIBEwdQ6tQ5IRy08mTjBM2OOca72fXLSLuGtEc4qVTjmNJ/LpTzWRrh7klSpBn1Lt4Raw==",
       "type": "package",
-      "path": "selenium.webdriver.chromedriver/85.0.4183.8700",
+      "path": "selenium.webdriver.chromedriver/87.0.4280.2000",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2115,7 +2112,7 @@
         "driver/mac64/chromedriver",
         "driver/win32/chromedriver.exe",
         "nupkg-icon.png",
-        "selenium.webdriver.chromedriver.85.0.4183.8700.nupkg.sha512",
+        "selenium.webdriver.chromedriver.87.0.4280.2000.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
       ]
     },
@@ -2125,7 +2122,6 @@
       "path": "system.appcontext/4.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4937,16 +4933,16 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.NET.Test.Sdk >= 16.4.0",
-      "NUnit3TestAdapter >= 3.15.1",
+      "NUnit3TestAdapter >= 3.17.0",
       "Selenium.WebDriver >= 3.141.0",
-      "Selenium.WebDriver.ChromeDriver >= 85.0.4183.8700",
+      "Selenium.WebDriver.ChromeDriver >= 87.0.4280.2000",
       "System.Data.SqlClient >= 4.8.2",
       "nunit >= 3.12.0"
     ]
   },
   "packageFolders": {
     "C:\\Users\\Pawel\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -4958,12 +4954,12 @@
       "outputPath": "C:\\Users\\Pawel\\source\\repos\\SAG2\\SAG2Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\Pawel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -4974,6 +4970,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -4985,6 +4982,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
@@ -4992,7 +4990,7 @@
           },
           "NUnit3TestAdapter": {
             "target": "Package",
-            "version": "[3.15.1, )"
+            "version": "[3.17.0, )"
           },
           "Selenium.WebDriver": {
             "target": "Package",
@@ -5000,7 +4998,7 @@
           },
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
-            "version": "[85.0.4183.8700, )"
+            "version": "[87.0.4280.2000, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
@@ -5026,7 +5024,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

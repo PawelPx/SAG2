@@ -39,7 +39,7 @@ namespace SAG2.Pages.Swords
             {
                 return NotFound();
             }
-           ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return Page();
         }
 

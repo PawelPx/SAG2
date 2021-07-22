@@ -39,11 +39,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Sword.ID" />
 
-            <label asp-for="Sword.Name" class="control-label"></label>
-            <input style="margin-left:63px; width:351px" asp-for="Sword.Name" class="form-control" />
+            <label style="margin-left:3px;" asp-for="Sword.Name" class="control-label"></label>
+            <input style="margin-left:66px; margin-bottom:3px; width:359px" asp-for="Sword.Name" class="form-control" />
             <span asp-validation-for="Sword.Name" class="text-danger"></span>
 
-            <table>
+            <table cellpadding="3">
                 <tbody>
                     <tr>
                         <td><label asp-for="Sword.Mass" class="control-label">Mass</label></td>
@@ -141,7 +141,7 @@
         <br><br><br><br>
 
         <h4>Attributes</h4>
-        <div class="myBorder">
+        <div class="footerBorder">
             <table>
                 <tbody>
                     <tr>

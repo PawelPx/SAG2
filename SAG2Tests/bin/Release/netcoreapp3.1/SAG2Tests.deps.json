@@ -9,9 +9,9 @@
       "SAG2Tests/1.0.0": {
         "dependencies": {
           "Microsoft.NET.Test.Sdk": "16.4.0",
-          "NUnit3TestAdapter": "3.15.1",
+          "NUnit3TestAdapter": "3.17.0",
           "Selenium.WebDriver": "3.141.0",
-          "Selenium.WebDriver.ChromeDriver": "85.0.4183.8700",
+          "Selenium.WebDriver.ChromeDriver": "87.0.4280.2000",
           "System.Data.SqlClient": "4.8.2",
           "NUnit": "3.12.0"
         },
@@ -372,7 +372,7 @@
           }
         }
       },
-      "NUnit3TestAdapter/3.15.1": {
+      "NUnit3TestAdapter/3.17.0": {
         "dependencies": {
           "Microsoft.DotNet.InternalAbstractions": "1.0.0",
           "System.ComponentModel.EventBasedAsync": "4.3.0",
@@ -436,7 +436,7 @@
           }
         }
       },
-      "Selenium.WebDriver.ChromeDriver/85.0.4183.8700": {},
+      "Selenium.WebDriver.ChromeDriver/87.0.4280.2000": {},
       "System.AppContext/4.1.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -1017,12 +1017,12 @@
       "path": "nunit/3.12.0",
       "hashPath": "nunit.3.12.0.nupkg.sha512"
     },
-    "NUnit3TestAdapter/3.15.1": {
+    "NUnit3TestAdapter/3.17.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-gqy0llGjhJYq9ebFvtbmBcF/MY8z5kcTIxYs+eXwp2d4Ntha8pSPxUzryvBm7H46VbWI6FS5/XNbxwiQpe88vQ==",
-      "path": "nunit3testadapter/3.15.1",
-      "hashPath": "nunit3testadapter.3.15.1.nupkg.sha512"
+      "sha512": "sha512-I9MNvK+GM2yXrHPitwZkAZKU9sYI2OO/8wKC+VuBD7V3z+ySQ1pSopX/urr0ooedI8/TIcajYPRO4vGRr7AM8A==",
+      "path": "nunit3testadapter/3.17.0",
+      "hashPath": "nunit3testadapter.3.17.0.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",
@@ -1066,12 +1066,12 @@
       "path": "selenium.webdriver/3.141.0",
       "hashPath": "selenium.webdriver.3.141.0.nupkg.sha512"
     },
-    "Selenium.WebDriver.ChromeDriver/85.0.4183.8700": {
+    "Selenium.WebDriver.ChromeDriver/87.0.4280.2000": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UaHj0RDkUoNtvYTVfZJk9Im/YpQX2nxugUZ5qWwx9phVu33tiecpBeTqQk4IPz8GQqUUjKdlT4QxKgu8VPafnA==",
-      "path": "selenium.webdriver.chromedriver/85.0.4183.8700",
-      "hashPath": "selenium.webdriver.chromedriver.85.0.4183.8700.nupkg.sha512"
+      "sha512": "sha512-jq1wC5pUz5Ov2CydyeIBEwdQ6tQ5IRy08mTjBM2OOca72fXLSLuGtEc4qVTjmNJ/LpTzWRrh7klSpBn1Lt4Raw==",
+      "path": "selenium.webdriver.chromedriver/87.0.4280.2000",
+      "hashPath": "selenium.webdriver.chromedriver.87.0.4280.2000.nupkg.sha512"
     },
     "System.AppContext/4.1.0": {
       "type": "package",

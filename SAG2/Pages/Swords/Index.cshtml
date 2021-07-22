@@ -6,21 +6,43 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+<head>
+    <style>
+        input{
+            padding: 6px 6px 6px 6px;
+        }
+        input[type=text] {
+            width: 350px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+        }
+    </style>
+</head>
+
 <h1>Swords</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form>
+    <p>
+        <input type="text" asp-for="SearchString" placeholder="Search..." />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Sword[0].Name)
+                @Html.DisplayNameFor(model => model.Swords[0].Name)
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Sword)
+        @foreach (var item in Model.Swords)
         {
             <tr>
                 <td>

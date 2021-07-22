@@ -36,7 +36,7 @@ namespace SAG2.Areas.Identity.Pages.Account
             }
             else
             {
-                return RedirectToPage();
+                return RedirectToPage("/Index");
             }
         }
     }

@@ -6,7 +6,7 @@ select {
     width: 120px;
 }
 
-.myBorder {
+.footerBorder {
     display: inline-block;
     border-style: solid;
     border-width: thin;
@@ -31,10 +31,12 @@ select {
 .left-part {
     float: left;
     width: 50%;
+    margin-bottom: 70px;
 }
 
 .right-part {
     /*text-align: center;*/
     float: left;
     width: 50%;
+    margin-bottom: 70px;
 }

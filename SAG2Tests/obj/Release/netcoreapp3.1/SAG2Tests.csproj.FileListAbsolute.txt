@@ -2,6 +2,8 @@ C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Release\netcoreapp3.1\NUnit3.Test
 C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Release\netcoreapp3.1\NUnit3.TestAdapter.pdb
 C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Release\netcoreapp3.1\nunit.engine.dll
 C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Release\netcoreapp3.1\nunit.engine.api.dll
+C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Release\netcoreapp3.1\nunit.engine.core.dll
+C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Release\netcoreapp3.1\SAG2Tests.dll.config
 C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Release\netcoreapp3.1\SAG2Tests.deps.json
 C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Release\netcoreapp3.1\SAG2Tests.runtimeconfig.json
 C:\Users\Pawel\source\repos\SAG2\SAG2Tests\bin\Release\netcoreapp3.1\SAG2Tests.runtimeconfig.dev.json

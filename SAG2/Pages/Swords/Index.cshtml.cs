@@ -22,27 +22,26 @@ namespace SAG2.Pages.Swords
             _context = context;
         }
 
-        public IList<Sword> Sword { get; set; }
-        public SelectList Names { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+        public IList<Sword> Swords { get; set; }
 
         public async Task OnGetAsync()
         {
-            IQueryable<string> query = from m in _context.Sword
-                                       orderby m.User.UserName
-                                       select m.User.UserName;
-
-            var swords = from m in _context.Sword
-                         select m;
+            IQueryable<Sword> swords = from m in _context.Sword
+                                       select m;
 
             if (!string.IsNullOrEmpty(User.Identity.Name))
             {
                 swords = swords.Where(x => x.User.UserName == User.Identity.Name);
             }
 
-            Sword = await swords.ToListAsync();
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                swords = swords.Where(s => s.Name.Contains(SearchString));
+            }
 
-            //Sword = await _context.Sword
-            //    .Include(s => s.User).ToListAsync();
+            Swords = await swords.ToListAsync();
         }
     }
 }
